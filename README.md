@@ -1,3 +1,9 @@
+## Installation:
+
+```
+pip install git+https://github.com/jet-black/dimalib
+```
+
 ## Usage example:
 
 ```python
