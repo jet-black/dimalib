@@ -1,3 +1,9 @@
 *.iml
 .idea
 out
+.idea/*
+.idea_modules/
+*.iml
+*.pyc
+*.swp
+MANIFEST
