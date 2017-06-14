@@ -95,14 +95,8 @@ def densenet121_model(img_rows, img_cols, color_type=1, nb_dense_block=4, growth
     # Cannot use model.layers.pop() since model is not of Sequential() type
     # The method below works since pre-trained weights are stored in layers but not in the model
     x_newfc = GlobalAveragePooling2D(name='pool'+str(final_stage))(x)
-    x_newfc = Dense(num_classes, name='fc6')(x_newfc)
-    x_newfc = Activation('softmax', name='prob')(x_newfc)
 
     model = Model(img_input, x_newfc)
-
-    # Learning rate is changed to 0.001
-    sgd = SGD(lr=1e-3, decay=1e-6, momentum=0.9, nesterov=True)
-    model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
 
