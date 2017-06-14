@@ -1,6 +1,6 @@
 from keras.layers.core import Layer
 from keras.engine import InputSpec
-from keras import initializations
+from keras import initializers
 from keras import backend as K
 
 class Scale(Layer):
@@ -31,8 +31,8 @@ class Scale(Layer):
     def __init__(self, weights=None, axis=-1, momentum = 0.9, beta_init='zero', gamma_init='one', **kwargs):
         self.momentum = momentum
         self.axis = axis
-        self.beta_init = initializations.get(beta_init)
-        self.gamma_init = initializations.get(gamma_init)
+        self.beta_init = initializers.get(beta_init)
+        self.gamma_init = initializers.get(gamma_init)
         self.initial_weights = weights
         super(Scale, self).__init__(**kwargs)
 
