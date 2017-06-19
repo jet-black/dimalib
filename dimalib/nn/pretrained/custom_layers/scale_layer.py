@@ -20,11 +20,11 @@ class Scale(Layer):
             List of 2 Numpy arrays, with shapes:
             `[(input_shape,), (input_shape,)]`
         beta_init: name of initialization function for shift parameter
-            (see [initializations](../initializations.md)), or alternatively,
+            (see [initializers](../initializers.md)), or alternatively,
             Theano/TensorFlow function to use for weights initialization.
             This parameter is only relevant if you don't pass a `weights` argument.
         gamma_init: name of initialization function for scale parameter (see
-            [initializations](../initializations.md)), or alternatively,
+            [initializers](../initializers.md)), or alternatively,
             Theano/TensorFlow function to use for weights initialization.
             This parameter is only relevant if you don't pass a `weights` argument.
     '''
@@ -40,8 +40,8 @@ class Scale(Layer):
         self.input_spec = [InputSpec(shape=input_shape)]
         shape = (int(input_shape[self.axis]),)
 
-        self.gamma = self.gamma_init(shape, name='{}_gamma'.format(self.name))
-        self.beta = self.beta_init(shape, name='{}_beta'.format(self.name))
+        self.gamma = K.variable(self.gamma_init(shape), name='{}_gamma'.format(self.name))
+        self.beta = K.variable(self.beta_init(shape), name='{}_beta'.format(self.name))
         self.trainable_weights = [self.gamma, self.beta]
 
         if self.initial_weights is not None:

@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 setup(name='dimalib',
-      version='1.2.2',
+      version='1.2.4',
       description='My utils',
       author='jet-black',
       author_email='ovechkin.dm@gmail.com',
